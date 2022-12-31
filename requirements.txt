@@ -1,0 +1,7 @@
+fastapi
+jinja2
+uvicorn
+youtube-search-python
+pytest
+httpx
+trio

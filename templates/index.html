@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Youtube Search</title>
+  </head>
+  <body>
+    <h1>Youtube Search</h1>
+    <p>
+      Enter a keyword, and the three most relevant videos will be displayed.
+    </p>
+    <label for="keyword">Keyword: </label>
+    <input type="text" id="keyword" autocomplete="off"/>
+    <button id="search" onclick="searchYoutube('youtube/links?keyword=', getLinks)">Search</button>
+    <div id="links"></div>
+    <script>
+      var input = document.getElementById("keyword");
+      input.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          document.getElementById("search").click();
+        }
+      });
+
+      function searchYoutube(url, xGetLinks) {
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {xGetLinks(this);}
+        var keyword = document.getElementById("keyword").value
+        url += keyword;
+        xhttp.open("GET", url);
+        xhttp.send();
+      }
+
+      function getLinks(xhttp) {
+        document.getElementById("links").innerHTML = xhttp.responseText;
+      }
+    </script>
+  </body>
+</html>
