@@ -12,7 +12,7 @@ class YoutubeLinks:
     def htmlize_links(self):
         links = ''
         for link in self:
-            link = link.replace("watch?v=", "embed/") + "?enablejsapi=1"
+            link = f'{link.replace("watch?v=", "embed/")}?enablejsapi=1'
             links += f'<iframe width="800" height="600" src="{link}"></iframe><br/>'
         return links
 
